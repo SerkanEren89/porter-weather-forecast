@@ -1,1 +1,15 @@
 /* Empty. Add your own CSS if you like */
+.card.blue {
+  background-color: rgb(121, 134, 203);
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.col-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}

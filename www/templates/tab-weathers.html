@@ -1,0 +1,19 @@
+<ion-view view-title="BERLIN">
+  <ion-content>
+    <ion-list ng-repeat="weather in weathers">
+
+      <ion-item class="card blue"  href="#/tab/weather-detail">
+        <div class="item">
+          <ion-icon style="float: right;" name={{icon}}></ion-icon>
+          {{weather.date | date : "EEEE"}}
+        </div>
+        <div class="item">
+          {{weather.date | date : "d MMM"}}
+          <span style="float: right;">{{weather.temperatureHighInt}} C</span>
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-view>
+

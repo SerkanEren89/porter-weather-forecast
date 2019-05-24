@@ -1,0 +1,15 @@
+<ion-view view-title="PLACES">
+  <ion-content>
+    <ion-list ng-repeat="weather in places track by $index" >
+      <ion-item class="card blue" href="#">
+        <div class="item">
+          <ion-icon style="float: right;" name={{weather.icon}}></ion-icon>
+          {{weather.place.name}}
+        </div>
+        <div class="item" style="float: right;">
+          {{weather.data.temperatureHighInt}} C
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

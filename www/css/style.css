@@ -1,6 +1,13 @@
 /* Empty. Add your own CSS if you like */
+ion-content {
+  background: #e8eaf6;
+}
 .card.blue {
   background-color: rgb(121, 134, 203);
+  border-radius: 10px;
+  margin-bottom:8px;
+  padding-bottom: 26px;
+  padding-top:24px;
 }
 
 .row-container {
@@ -12,4 +19,109 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+}
+.city-name {
+  font-size: 24px;
+  font-family: Verdana;
+  color:white;
+  padding-bottom: 16px;
+}
+.city-date {
+  font-size: 16px;
+  font-family: Verdana-Regular;
+  color: white;
+}
+
+.city-temp {
+  font-size: 40px;
+  font-family: Verdana-Bold;
+  color: white;
+  margin-top:24px;
+}
+.city-celcius {
+  font-size: 16px;
+  font-family: Verdana;
+  color: white;
+  margin-left: 8px;
+  margin-top: 12px;
+}
+.city-icon {
+  margin: 16px;
+  font-size: 40px;
+  color: rgb(189, 217, 229);
+}
+.col-container.left {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: start;
+}
+.popup-item {
+  font-size: 16px;
+}
+.button-positive.orange{
+  background-color: rgb(255 112 67)
+}
+
+.tabs-striped .tabs{
+  background-color: #e8eaf6;
+}
+
+.bar.bar-stable {
+  background-color:#e8eaf6;
+  padding-top:8px;
+}
+.bar.bar-stable .title {
+  font-size: 30px;
+  color: #6270bf;
+}
+.bar-stable .button {
+  color: rgb(255, 110, 64);
+  background: #e8eaf6;
+  border: none;
+  font-size: 30px;
+}
+.detail-summary {
+  text-align: center;
+  font-size: 20px;
+  margin:10px;
+  padding: 16px;
+  color:white;
+}
+
+.detail-value-big {
+  text-align: center;
+  font-size: 60px;
+  margin:10px;
+  padding: 16px;
+  color:white;
+}
+
+.detail-icon-big {
+  margin: 16px;
+  font-size: 60px;
+  color: rgb(189, 217, 229);
+}
+
+.detail-text{
+  font-size: 20px;
+  color:white;
+  font-family: Verdana-Bold
+}
+
+.tab-nav{
+  background-color: #e8eaf6;
+}
+.settings-item{
+  background-color: #6270bf;
+}
+.col-container.detail {
+  background-color: rgba(255,255,255,0.1);
+  padding: 16px;
+  border-radius: 10px;
+}
+.setting-checkmark {
+  font-size: 24px;
+  color: white;
+  padding-right: 50px;
 }

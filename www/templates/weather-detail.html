@@ -1,55 +1,62 @@
-<ion-view view-title="BERLIN">
-  <ion-content>
-    <ion-grid>
-      <ion-item>
-        <ion-row class="row-container">
-          <ion-col class="col-container" ng-repeat="weather in hourlyWeathers">
-            <span>{{weather.date | date : "HH:mm"}}</span>
-            <span>{{weather.temperatureInt}} C</span>
-          </ion-col>
-        </ion-row>
-      </ion-item>
-    </ion-grid>
+<ion-view view-title={{cityName}}>
+  <ion-content style="background-color: rgb(121, 134, 203)">
+    <ion-row class="row-container" >
+      <ion-col class="col-container" >
+        <span class="detail-icon-big"><ion-icon name="rainy"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-container" >
+      <ion-col class="col-container" >
+        <span class="detail-value-big">{{  hourlyWeathers[0].temperatureInt}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-container" >
+      <ion-col class="col-container" >
+        <span class="detail-summary">{{  summary}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-container" style="background-color: rgba(255,255,255,0.1);margin-bottom: 24px;padding-bottom: 12px;padding-top:12px">
+      <ion-col class="col-container" ng-repeat="weather in hourlyWeathers">
+        <span style="color:white;">{{weather.date | date : "HH:mm"}}</span>
+        <span style="color:white;">{{weather.temperatureInt}} C</span>
+      </ion-col>
+    </ion-row>
 
-    <ion-grid>
-      <ion-item>
+    <ion-row class="row-container">
+      <ion-col class="col-container detail">
         <ion-row class="row-container">
-          <ion-col class="col-container">
-            <ion-row class="row-container">
-              Feels like
-            </ion-row>
-            <ion-row class="row-container">
-              {{dailyWeathers[0].apparentTemperatureHighInt}}
-            </ion-row>
-          </ion-col>
-          <ion-col class="col-container">
-            <ion-row class="row-container">
-              Humidity
-            </ion-row>
-            <ion-row class="row-container">
-              <span>{{dailyWeathers[0].temperatureMinInt}} C</span>
-            </ion-row>
-          </ion-col>
+          <span class="detail-text">Feels like</span>
         </ion-row>
         <ion-row class="row-container">
-          <ion-col class="col-container">
-            <ion-row class="row-container">
-              Lowest
-            </ion-row>
-            <ion-row class="row-container">
-              {{dailyWeathers[0].temperatureMinInt}}
-            </ion-row>
-          </ion-col>
-          <ion-col class="col-container">
-            <ion-row class="row-container">
-              Highest
-            </ion-row>
-            <ion-row class="row-container">
-              <span>{{dailyWeathers[0].temperatureHighInt}} C</span>
-            </ion-row>
-          </ion-col>
+          <span class="detail-text">{{dailyWeathers[0].apparentTemperatureHighInt}}</span>
         </ion-row>
-      </ion-item>
-    </ion-grid>
+      </ion-col>
+      <ion-col class="col-container detail">
+        <ion-row class="row-container">
+          <span class="detail-text">Humidity</span>
+        </ion-row>
+        <ion-row class="row-container">
+          <span class="detail-text">{{dailyWeathers[0].temperatureMinInt}} C</span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-container" style="margin-top:16px;">
+      <ion-col class="col-container detail">
+        <ion-row class="row-container">
+          <span class="detail-text">Lowest</span>
+        </ion-row>
+        <ion-row class="row-container">
+          <span class="detail-text">{{dailyWeathers[0].temperatureMinInt}} </span>
+        </ion-row>
+      </ion-col>
+      <ion-col class="col-container detail">
+        <ion-row class="row-container">
+          <span class="detail-text">Highest</span>
+        </ion-row>
+        <ion-row class="row-container">
+          <span class="detail-text">{{dailyWeathers[0].temperatureHighInt}} C</span>
+        </ion-row>
+      </ion-col>
+    </ion-row>
   </ion-content>
 </ion-view>

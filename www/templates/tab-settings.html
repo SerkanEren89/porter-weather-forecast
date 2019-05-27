@@ -1,8 +1,12 @@
 <ion-view view-title="Settings">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="setting in settings" type="item-text-wrap" ng-click="selectLanguage(setting)">
-        <h2>{{setting.language}}</h2>
+      <ion-item class="settings-item" ng-repeat="setting in settings" type="item-text-wrap" ng-click="selectLanguage(setting)">
+        <h2 style="color:white;font-size: 20px;font-family: Verduna;">
+          {{setting.language}}
+          <span ng-show="setting.selected" class="setting-checkmark"><ion-icon style="float: right;" name="checkmark"></ion-icon></span>
+        </h2>
+
       </ion-item>
     </ion-list>
   </ion-content>

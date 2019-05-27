@@ -1,19 +1,33 @@
-<ion-view view-title="BERLIN">
+<ion-view view-title={{cityName}}>
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="changeLocation()">
+      <ion-icon name="locate"></ion-icon>
+    </button>
+  </ion-nav-buttons>
+
   <ion-content>
-    <ion-list ng-repeat="weather in weathers">
+    <ion-item class="card blue" ng-repeat="weather in weathers" ng-click="goToDetail()">
+      <ion-row class="row-container">
+        <ion-col class="col-container" style="align-items: start;">
+            <span class="city-name">
+              {{weather.date | date : "EEEE"}}
+            </span>
+          <span class="city-date">
+              {{weather.date | date : "d MMM"}}
+            </span>
 
-      <ion-item class="card blue"  href="#/tab/weather-detail">
-        <div class="item">
-          <ion-icon style="float: right;" name={{icon}}></ion-icon>
-          {{weather.date | date : "EEEE"}}
-        </div>
-        <div class="item">
-          {{weather.date | date : "d MMM"}}
-          <span style="float: right;">{{weather.temperatureHighInt}} C</span>
-        </div>
-      </ion-item>
+        </ion-col>
+        <ion-col class="col-container" style="display:inline">
+          <ion-row class="row-container">
+            <span class="city-icon"><ion-icon name={{icon}}></ion-icon></span>
+            <span class="city-temp">{{weather.temperatureHighInt}}</span><span class="city-celcius">&#8451;</span>
+          </ion-row>
+        </ion-col>
+      </ion-row>
 
-    </ion-list>
+    </ion-item>
+
   </ion-content>
 </ion-view>
+
 

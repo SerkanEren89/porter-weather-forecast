@@ -1,11 +1,18 @@
 angular.module('starter.services', [])
 
-  .factory('SettingFactory', function () {
+  .factory('SettingFactory', function ($rootScope) {
 
     var setting = {
       abbr: 'en',
-        language: 'English'
+      language: 'English'
     };
+    var city = {
+      id: 0,
+      name: 'Berlin',
+      latitude: '52.520008',
+      longitude: '13.404954'
+    };
+
     return {
       getSetting: function () {
         return setting;
@@ -13,6 +20,15 @@ angular.module('starter.services', [])
       },
       setSetting: function (newSetting) {
         setting = newSetting;
+        $rootScope.$broadcast('settings-changed');
+      },
+      getCity: function () {
+        return city;
+
+      },
+      setCity: function (newCity) {
+        city = newCity;
+        $rootScope.$broadcast('settings-changed');
       }
     };
   })
@@ -27,7 +43,6 @@ angular.module('starter.services', [])
     return {
       getPlace: function () {
         return place;
-
       },
       setPlace: function (newPlace) {
         place = newPlace;
@@ -35,18 +50,20 @@ angular.module('starter.services', [])
     };
   })
 
-  .factory('Weathers', function ($http, SettingFactory, PlaceFactory) {
-    var place = PlaceFactory.getPlace();
-    var setting = SettingFactory.getSetting();
-    var baseUrl = "http://localhost:8080/weathers" ;
+  .factory('Weathers', function ($http, SettingFactory) {
+    var baseUrl = "http://localhost:8080/weathers";
     return {
       dailyWeather: function () {
+        var place = SettingFactory.getCity();
+        var setting = SettingFactory.getSetting();
         var dailyUrl = baseUrl + "/daily?latitude=" + place.latitude + "&longitude=" + place.longitude + "&lang=" + setting.abbr;
         return $http.get(dailyUrl).then(function (response) {
           return response.data;
         });
       },
       hourlyWeather: function () {
+        var place = SettingFactory.getCity();
+        var setting = SettingFactory.getSetting();
         var hourlyUrl = baseUrl + "/hourly?latitude=" + place.latitude + "&longitude=" + place.longitude + "&lang=" + setting.abbr;
         return $http.get(hourlyUrl).then(function (response) {
           return response.data;
@@ -60,22 +77,26 @@ angular.module('starter.services', [])
       id: 0,
       name: 'Berlin',
       latitude: '52.520008',
-      longitude: '13.404954'
+      longitude: '13.404954',
+      selected: false
     }, {
       id: 1,
       name: 'Paris',
       latitude: '48.856613',
-      longitude: '2.352222'
+      longitude: '2.352222',
+      selected: false
     }, {
       id: 2,
       name: 'Amsterdam',
       latitude: '52.370216',
-      longitude: '4.895168'
+      longitude: '4.895168',
+      selected: false
     }, {
       id: 3,
       name: 'Barcelona',
       latitude: '41.385063',
-      longitude: '2.173404'
+      longitude: '2.173404',
+      selected: false
     }];
 
     return {
@@ -117,6 +138,18 @@ angular.module('starter.services', [])
     var baseUrl = "http://localhost:8080/languages";
     return {
       all: function () {
+        return $http.get(baseUrl).then(function (response) {
+          return response.data;
+        });
+      }
+    };
+  })
+
+  .factory('Locations', function ($http) {
+    var baseUrl = "http://localhost:8080/locations?latitude=";
+    return {
+      getLocation: function (latitude, longitute) {
+        baseUrl += latitude + "&longitude=" + longitute;
         return $http.get(baseUrl).then(function (response) {
           return response.data;
         });

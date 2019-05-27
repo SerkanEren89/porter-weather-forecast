@@ -1,15 +1,28 @@
 <ion-view view-title="PLACES">
+
   <ion-content>
-    <ion-list ng-repeat="weather in places track by $index" >
-      <ion-item class="card blue" href="#">
-        <div class="item">
-          <ion-icon style="float: right;" name={{weather.icon}}></ion-icon>
-          {{weather.place.name}}
-        </div>
-        <div class="item" style="float: right;">
-          {{weather.data.temperatureHighInt}} C
-        </div>
-      </ion-item>
-    </ion-list>
+    <ion-item class="card blue" ng-repeat="weather in places track by $index">
+
+      <ion-row class="row-container">
+        <ion-col class="col-container" style="align-items: start;">
+            <span class="city-name">
+              {{weather.place.name | uppercase}}
+            </span>
+          <span class="city-date">
+              {{weather.data.date | date : "dd LLLL"}}
+            </span>
+
+        </ion-col>
+        <ion-col class="col-container" style="display:inline">
+          <ion-row class="row-container">
+            <span class="city-icon"><ion-icon name={{weather.icon}}></ion-icon></span>
+            <span class="city-temp">{{weather.data.temperatureHighInt}}</span><span class="city-celcius">&#8451;</span>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      </div>
+    </ion-item>
+
   </ion-content>
 </ion-view>

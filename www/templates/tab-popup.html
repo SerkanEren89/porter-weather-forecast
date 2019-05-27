@@ -1,0 +1,14 @@
+<ion-list ng-repeat="place in places track by $index" >
+  <ion-item ng-click="selectCity(place)">
+
+    <ion-row class="row-container">
+      <ion-col >
+            <span class="popup-item">
+              {{place.name}}
+            </span>
+        <span ng-show="place.selected"><ion-icon name="checkmark"></ion-icon></span>
+      </ion-col>
+    </ion-row>
+    </div>
+  </ion-item>
+</ion-list>

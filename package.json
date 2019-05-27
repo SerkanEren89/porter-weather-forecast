@@ -10,6 +10,13 @@
     "gulp-sass": "^3.1.0"
   },
   "dependencies": {
+    "@ionic-native/geolocation": "^5.6.0",
+    "cordova-plugin-geolocation": "4.0.1",
     "ngstorage": "^0.3.11"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-geolocation": {}
+    }
   }
 }

@@ -1,6 +1,8 @@
 // Ionic Starter App
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'PlacesCtrl', 'SettingsCtrl' ,
+                            'WeatherCtrl', 'WeatherDetailCtrl',
+  'LocationsService', 'LanguagesService', 'PlaceFactory', 'PlacesService', 'SettingFactory', 'WeathersService', 'ngCordova'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {

@@ -1,8 +1,8 @@
-angular.module('starter.controllers', [])
-
-  .controller('WeatherCtrl', function ($scope, $state, $ionicPopup, $cordovaGeolocation, Weathers, Places, SettingFactory, Locations) {
+angular.module('WeatherCtrl', [])
+  .controller('WeatherCtrl', function ($scope, $state, $ionicPopup, $cordovaGeolocation, WeathersService,
+                                       PlacesService, SettingFactory, LocationsService) {
     var selectedCity = SettingFactory.getCity();
-    var result = Places.all();
+    var result = PlacesService.all();
     result.push({
       id: -1,
       name: 'Use my current location'
@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
         $cordovaGeolocation
           .getCurrentPosition(posOptions)
           .then(function (position) {
-            Locations.getLocation(position.coords.latitude, position.coords.longitude)
+            LocationsService.getLocation(position.coords.latitude, position.coords.longitude)
               .then(function (response) {
                 var currentCity = {
                   name: response.city,
@@ -69,7 +69,7 @@ angular.module('starter.controllers', [])
     }
 
     function loadData() {
-      Weathers.dailyWeather().then(function (result) {
+      WeathersService.dailyWeather().then(function (result) {
         $scope.weathers = result.daily.data;
         $scope.latitude = result.latitude;
         $scope.longitude = result.longitude;
@@ -77,43 +77,4 @@ angular.module('starter.controllers', [])
         $scope.cityName = SettingFactory.getCity().name;
       });
     }
-  })
-
-  .controller('WeatherDetailCtrl', function ($scope, Weathers, SettingFactory) {
-    $scope.$on("settings-changed", function (event, data) {
-      loadData();
-    });
-    loadData();
-
-    function loadData() {
-      Weathers.hourlyWeather().then(function (result) {
-        $scope.hourlyWeathers = result.hourly.data;
-        $scope.dailyWeathers = result.daily.data;
-        $scope.cityName = SettingFactory.getCity().name;
-        $scope.summary = result.daily.summary;
-      });
-    }
-  })
-
-  .controller('PlacesCtrl', function ($scope, Places) {
-    $scope.places = Places.placesWeather();
-  })
-
-  .controller('SettingsCtrl', function ($scope, Languages, SettingFactory, Languages) {
-    var selectedSettings = SettingFactory.getSetting();
-    function changeSelection(result, selectedSettings) {
-      for (var index = 0; index < result.length; ++index) {
-        result[index].selected = selectedSettings.abbr === result[index].abbr;
-      }
-    }
-
-    $scope.settings = Languages.all().then(function (result) {
-      changeSelection(result, selectedSettings);
-      $scope.settings = result;
-    });
-
-    $scope.selectLanguage = function (setting) {
-      SettingFactory.setSetting(setting);
-      changeSelection($scope.settings, setting)
-    };
   });

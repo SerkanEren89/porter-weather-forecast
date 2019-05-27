@@ -125,3 +125,9 @@ ion-content {
   color: white;
   padding-right: 50px;
 }
+
+.setting-text {
+  color:white;
+  font-size: 20px;
+  font-family: Verduna;
+}

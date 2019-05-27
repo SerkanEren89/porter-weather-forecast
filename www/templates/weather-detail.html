@@ -15,10 +15,15 @@
         <span class="detail-summary">{{  summary}}</span>
       </ion-col>
     </ion-row>
+    <ion-row class="row-container" >
+      <ion-col class="col-container" >
+        <span style="color:white">TODAY, {{hourlyWeathers[0].date | date : "dd MMM"}}</span>
+      </ion-col>
+    </ion-row>
     <ion-row class="row-container" style="background-color: rgba(255,255,255,0.1);margin-bottom: 24px;padding-bottom: 12px;padding-top:12px">
       <ion-col class="col-container" ng-repeat="weather in hourlyWeathers">
         <span style="color:white;">{{weather.date | date : "HH:mm"}}</span>
-        <span style="color:white;">{{weather.temperatureInt}} C</span>
+        <span style="color:white;">{{weather.temperatureInt}} &#8451;</span>
       </ion-col>
     </ion-row>
 
@@ -28,7 +33,7 @@
           <span class="detail-text">Feels like</span>
         </ion-row>
         <ion-row class="row-container">
-          <span class="detail-text">{{dailyWeathers[0].apparentTemperatureHighInt}}</span>
+          <span class="detail-text">{{dailyWeathers[0].apparentTemperatureHighInt}} &#8451;</span>
         </ion-row>
       </ion-col>
       <ion-col class="col-container detail">
@@ -36,7 +41,7 @@
           <span class="detail-text">Humidity</span>
         </ion-row>
         <ion-row class="row-container">
-          <span class="detail-text">{{dailyWeathers[0].temperatureMinInt}} C</span>
+          <span class="detail-text">{{dailyWeathers[0].humidity * 100}} </span>
         </ion-row>
       </ion-col>
     </ion-row>
@@ -46,7 +51,7 @@
           <span class="detail-text">Lowest</span>
         </ion-row>
         <ion-row class="row-container">
-          <span class="detail-text">{{dailyWeathers[0].temperatureMinInt}} </span>
+          <span class="detail-text">{{dailyWeathers[0].temperatureMinInt}} &#8451;</span>
         </ion-row>
       </ion-col>
       <ion-col class="col-container detail">
@@ -54,7 +59,7 @@
           <span class="detail-text">Highest</span>
         </ion-row>
         <ion-row class="row-container">
-          <span class="detail-text">{{dailyWeathers[0].temperatureHighInt}} C</span>
+          <span class="detail-text">{{dailyWeathers[0].temperatureHighInt}} &#8451;</span>
         </ion-row>
       </ion-col>
     </ion-row>
